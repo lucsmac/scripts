@@ -1,0 +1,322 @@
+<!-- 14/10/2020 - Adicionar botão de agendamento e ajustar responsividade nas imagens da interna do novo onix -->
+<script>
+
+  const addBtnAgendamento = () => {
+  
+    // desktop
+  
+    const btnsTarget = document.querySelector('.header__navbar-item.header__phones')
+    const btnAgendamento = document.createElement('div')
+    btnAgendamento.classList.add('header__phones-container')
+    btnAgendamento.setAttribute('id', 'waRebelde')
+  
+    btnAgendamento.innerHTML = `
+    <a class="btn button button--line" href="https://guiauto.autoforce.com.br/guiauto-chevrolet/empresa/agendamento-de-oficina" style="border-color: rgb(215, 179, 103); background-color: rgb(215, 179, 103); color: rgb(255, 255, 255);">
+      <i class="icon icon-services"></i> Agendamento 
+    </a>`
+  
+    btnsTarget.appendChild(btnAgendamento)
+  
+    // mobile
+  
+    const headerMobile = document.querySelector('.header-mobile__buttons')
+    const buttonMobile = document.createElement('div')
+    buttonMobile.innerHTML = '<a class="button-icon header__phones-button-toggler-mobile" href="https://guiauto.autoforce.com.br/guiauto-chevrolet/empresa/agendamento-de-oficina" style="border-color: rgb(215, 179, 103); background-color: rgb(215, 179, 103); color: rgb(255, 255, 255);"><i class="icon icon-services"></i></a>'
+  
+    headerMobile.appendChild(buttonMobile)
+  
+    // styles
+  
+    const addStyle = ({ styles }) => {
+      const css = styles,
+          head = document.head || document.getElementsByTagName('head')[0],
+          style = document.createElement('style');
+      head.appendChild(style);
+      style.setAttribute('type', 'text/css');
+      if (style.styleSheet){
+        // This is required for IE8 and below.
+        style.styleSheet.cssText = css;
+      } else {
+        style.appendChild(document.createTextNode(css));
+      }
+    }
+  
+    addStyle({
+      styles: `
+        .section-component.carousel-products {
+           display: none;
+        }
+  
+        .fragment-info-extra__container img {
+          width: 100%;
+          height: auto;
+        }
+      
+        .header__navbar-title.header__navbar-title--label.d-flex {
+          display: none !important;
+        }
+  
+        @media screen and (max-width: 992px) {
+          .header__logo.img-fluid {
+            width: 100px;
+          }
+        }
+      `
+    })
+  }
+  
+  addBtnAgendamento()
+  </script>
+  
+  <!-- 14/10/2020 - Alterar ordem de exibição das seções na index -->
+  <script>
+  const changeIndexOrdenation = () => {
+    const moveSection = (elToMove, elRef) => {
+      const el = (typeof elToMove) === 'string' ? document.querySelector(elToMove) : elToMove
+      const ref = (typeof elRef) === 'string' ? document.querySelector(elRef) : elRef
+  
+      ref.parentNode.insertBefore(el, ref)
+    }
+  
+    // carrossel de veiculos novos pra antes de consórcio
+  
+    const specialOffersSection = document.querySelector('.section-component.vehicles-new.carousel-vehicles-new')
+    const consortia = document.querySelector('.section-component.carousel-consortia')
+    
+    moveSection(specialOffersSection, consortia)
+  
+    // vendas diretas para antes de seminovos
+  
+    const directSales = document.querySelector('.section-component.carousel-direct-sales')
+    const usedModels = document.querySelector('.section-component.used-models')
+  
+    moveSection(directSales, usedModels)
+  }
+  
+  changeIndexOrdenation()
+  </script>
+  
+  <!-- 14/10/2020 - Alterar títulos da index -->
+  <script>
+  const changeSectionsTitles = () => {
+  // - Alterar texto da index de "Confira Ofertas Especiais da Guiauto Chevrolet" para "Ofertas Exclusivas Grupo Guiauto & CVG".
+  
+    const specialOffersTitle = document.querySelector('.section-component__title.carousel-offers-vehicles-new__title')
+    specialOffersTitle.innerHTML = `
+    <i class="icon icon--section icon-offer"></i> Ofertas Exclusivas <span>&nbsp;Grupo Guiauto & CVG</span></h2>
+    `
+  
+  // - Alterar texto da index de "Consórcio" para "Consórcio Nacional Chevrolet".
+  
+    const consortiaTitle = document.querySelector('.carousel-consortia .section-component__title')
+    consortiaTitle.innerHTML = ` Consórcio <span>Nacional Chevrolet</span>`
+  }
+  
+  changeSectionsTitles()
+  </script>
+  
+  <!-- 14/10/2020 - Alterar texto legal -->
+  <script>
+  const changeLegaLText = () => {
+    const isThisPage = ({ urlPiece }) => {
+        const fullURL = window.location.href
+        const result = fullURL.includes(urlPiece)
+    
+        return result
+    }
+    
+    if(isThisPage({ urlPiece: 'servicos/' })) {
+      const target = document.querySelector('.legal-text.mt-4')
+      target.innerHTML = 'Imagens meramente ilustrativas. Alguns itens apresentados poderão não estar disponíveis nas versões. Preço passível de confirmação no momento do agendamento do serviço.'
+    }
+  }
+  
+  changeLegaLText()
+  </script>
+  
+  <!-- 15/10/2020 - Alterar ordenação do menu -->
+  <script>
+  (() => {
+    const getMenuElementByText = ({listOfElements, elementText, elementTag}) => {
+      return [].find.call(listOfElements, (element) => {
+          const currentElement = element.querySelector(elementTag)
+          const currentElementText = currentElement.innerText.toUpperCase()
+          
+          return currentElementText.includes(elementText.toUpperCase())
+      });
+    }
+  
+    const menuItems = document.querySelectorAll('.nav-item')
+    const toMove = getMenuElementByText({
+      listOfElements: menuItems,
+      elementText: 'Vendas Diretas',
+      elementTag: 'a'
+    })
+    const refEl = getMenuElementByText({
+      listOfElements: menuItems,
+      elementText: 'Pós-venda',
+      elementTag: 'a'
+    })
+  
+    refEl.parentNode.insertBefore(toMove, refEl)
+  })()
+  </script>
+  
+  <!-- CENTRALIZAR IFRAME DE AGENDAMENTO -->
+  <script>
+  $("body > div > div > div > div.container.content__container").css({'justify-content':'center'})
+  </script>
+  
+  <!-- 26/10/2020 - Redirecionar botões de serviços para url específica -->
+  <script>
+  (() => {
+    if(window.location.href.includes('/servicos')){
+      const servicesBtns = document.querySelectorAll('.list-services .list-services__item a.btn.card__cta')
+  
+      Array.prototype.forEach.call(servicesBtns, (btn) => {
+        btn.setAttribute('href', 'https://guiauto.autoforce.com.br/guiauto-chevrolet/empresa/agendamento-de-oficina')
+      })
+    }
+  })()
+  </script>
+  
+  <!-- 28/10/2020 - Mudar link botões de serviços na index -->
+  <script>
+  (() => {
+    const servicesWrapper = document.querySelector('.section-component.services.carousel-services .services__carousel ')
+    if(servicesWrapper) {
+      const btns = servicesWrapper.querySelectorAll('.card__footer a')
+  
+      Array.prototype.forEach.call(btns, (btn) => {
+        btn.setAttribute('href', 'https://guiauto.autoforce.com.br/guiauto-chevrolet/empresa/agendamento-de-oficina')
+      })
+    }
+  })()
+  </script>
+  
+  <!-- 26/10/2020 - Remover etapa de formulário e redicionar pra api do wpp -->
+  <script>
+  (() => {
+    document.addEventListener("DOMContentLoaded", function(event) {
+      const getMenuElementByText = ({listOfElements, elementText, elementTag}) => {
+        return [].find.call(listOfElements, (element) => {
+            const currentElement = element.querySelector(elementTag)
+            const currentElementText = currentElement.innerHTML.toUpperCase()
+            
+            return currentElementText.includes(elementText.toUpperCase())
+        });
+      }
+  
+      const wppWrapper = document.querySelector('#whatsapp-content-0')
+      const duplicatedItem = getMenuElementByText({
+        listOfElements: wppWrapper.querySelectorAll('li.header__card-whatsapp-item'),
+        elementText: '+55 (31) 99879-0020',
+        elementTag: 'span'
+      })
+      
+      duplicatedItem.parentNode.removeChild(duplicatedItem.nextSibling)
+  
+      wppWrapper.innerHTML = wppWrapper.innerHTML.replace('href="#"', 'href="https://api.whatsapp.com/send?phone=5531998790020&text=Ol%C3%A1!%20Preenchi%20o%20formul%C3%A1rio%20no%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank"')
+    });
+  })()
+  </script>
+  
+  <!-- 28/10/2020 - Remover form do botão de wpp na index -->
+  <script>
+  (() => {
+    const buildWppBtn = (element, classNames, innerHTML, hasId = false, cssProperties) => {
+      const newWppCta = document.createElement('a')
+      newWppCta.classList.add(...classNames)
+  
+      newWppCta.setAttribute('href', 'https://api.whatsapp.com/send?phone=5531998790020&text=Ol%C3%A1!%20Estava%20no%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.')
+      newWppCta.setAttribute('target', '_blank')
+  
+      if(hasId)
+        newWppCta.setAttribute('id', hasId)
+    
+      newWppCta.innerHTML = innerHTML
+  
+      cssProperties && cssProperties.forEach(({ prop, value}) => {
+        newWppCta.style.setProperty(prop, value)
+      })
+    
+      const targetPosition = element.parentNode
+      targetPosition.removeChild(element)
+      targetPosition.appendChild(newWppCta)
+    }
+  
+    // Remover form no cta da index
+  document.addEventListener("DOMContentLoaded", function(event) {
+    const wppCta = document.querySelector('.container.vehicles-new__ctas .vehicles-new__button-whatsapp')
+    if(wppCta) 
+      buildWppBtn(wppCta, ["vehicles-new__button-whatsapp", "btn", "button", "button--large", "button--section", "button--whatsapp"], `<i class="icon icon-whatsapp"></i> Central de Vendas `)
+  })
+  
+    // Remover form nas internas de cada veículo
+    const wppCtaInterna = document.querySelector('#modal-whatsapp-button')
+    if(wppCtaInterna) 
+      buildWppBtn(wppCtaInterna, ['btn', 'button', 'button--large', 'button--whatsapp'], `<i class="icon icon-whatsapp"></i> Negocie pelo whatsapp `, 'modal-whatsapp-button', [{ prop: 'width', value: '100%'}])
+  })()
+  </script>
+  
+  <!-- 28/10/2020 - add popup whatsapp -->
+  <!-- INICIO DO SCRIPT DE WHATSAPP-->
+  <script type="text/javascript">
+      //TROQUE O NUMERO E NOME DO TELEFONE AQUI - FORMATO: DDD NUMERO
+      telefone1 = '31998790020';
+      tituloTelefone1 = 'WhatsApp';
+      
+      telefone2 = '';
+      tituloTelefone2 = '';
+      
+      telefone3 = '';
+      tituloTelefone3 = '';
+      //TROQUE A MENSAGEM, EDITANDO O TEXTO DENTRO DAS ASPAS
+      mensagem = "Olá! Preenchi o formulário no site e gostaria de mais informações.";
+    
+    //TROQUE O TÍTULO, EDITANDO O TEXTO DENTRO DAS ASPAS
+      tituloBotao = "Fale pelo WhatsApp";
+  </script>
+  <script type="text/javascript" src="//legado.autoforce.com.br/mods/plugins/WhatsApp/botao-whats-multiple-right_enzo_v3.js"></script>
+  <!-- FIM DO SCRIPT DE WHATSAPP-->
+  
+  <!-- 29/10/2020 - Redirecionar botão de agendamento na interna de serviços -->
+  <script>
+  (() => {
+    const removeForm = (element, linkApi, blank = false, cssProperties = null) => {
+      const newWppCta = document.createElement('a')
+      const innerHTML= element.innerHTML
+      element.classList.forEach(currClass => newWppCta.classList.add(currClass))
+  
+      newWppCta.setAttribute('href', linkApi)
+      blank && newWppCta.setAttribute('target', '_blank')
+  
+      const hasId = element.getAttribute('id')
+      if(hasId)
+        newWppCta.setAttribute('id', hasId)
+    
+      newWppCta.innerHTML = innerHTML
+  
+      cssProperties && cssProperties.forEach(({ prop, value}) => newWppCta.style.setProperty(prop, value))
+    
+      const targetPosition = element.parentNode
+      targetPosition.removeChild(element)
+      targetPosition.appendChild(newWppCta)
+    }
+  
+  document.addEventListener("DOMContentLoaded", function(event) {
+    const btnAgendamento = document.querySelector('.showcase-services__panel-btn-schedule')
+    const link = 'https://guiauto.autoforce.com.br/guiauto-chevrolet/empresa/agendamento-de-oficina'
+    if(btnAgendamento ) 
+      removeForm(btnAgendamento , link)
+  })
+  })()
+  </script>
+  
+  <!-- 29/10/2020 - remover agendamento de oficina do menu -->
+  <script>
+  Array.prototype.slice.call(document.querySelectorAll('.nav .nav-link'))
+  .filter(function (el) {
+      return el.textContent === ' Agendamento de Oficina '
+  })[0].parentNode.classList.add('d-none')
+  </script>

@@ -1,0 +1,69 @@
+
+<!-- 23/11/2020 - Remover modal do WPP e direcionar pra API -->
+<script>
+const removeElementBySelector = ({ elementSelector }) => {
+    const elementToRemove = (typeof elementSelector) === 'string' ? document.querySelector(elementSelector) : elementSelector
+    const elementFather = elementToRemove.parentNode
+
+    elementFather.removeChild(elementToRemove)
+}
+
+const replaceElement = ({ elementToRemoveSelector, elementToReplaceSelector }) => {
+    const elementToRemove = (typeof elementToRemoveSelector) === 'string' ? document.querySelector(elementToRemoveSelector) : elementToRemoveSelector
+    const elementToReplace = (typeof elementToReplaceSelector) === 'string' ? document.querySelector(elementToReplaceSelector) : elementToReplaceSelector
+    
+    const nextElement = elementToRemove.nextSibling
+    const father = elementToRemove.parentNode
+
+    father.classList.remove('card-collapse')
+    
+    removeElementBySelector({ elementSelector: elementToRemove })
+    father.insertBefore(elementToReplace, nextElement)
+    
+}
+
+const isThisPage = ({ urlPiece }) => {
+    const fullURL = window.location.href
+    const result = fullURL.includes(urlPiece)
+
+    return result
+}
+
+const removeModalWpp = () => {
+    const btnWpp = document.querySelector('#modal-whatsapp-button')
+    const btnWppMobile = document.querySelector('.btn.button.button--large.button--whatsapp.w-100')
+    const newBtn = document.createElement('a')
+    const newBtnMobile = document.createElement('a')
+    const link = document.querySelector('.showcase-offer__conversion-whatsapp-box').getAttribute('data-link')
+    
+    const content = {
+        classes: btnWpp.getAttribute('class').split(' '),
+        classesMobile: btnWppMobile.getAttribute('class').split(' '),
+        innerHTML: btnWpp.innerHTML,
+        innerHTMLMobile: btnWppMobile.innerHTML,
+        link
+    }
+    
+    content.classes.forEach((currentClass) => {
+        newBtn.classList.add(currentClass)
+    })
+    newBtn.innerHTML = content.innerHTML
+    newBtn.setAttribute('href', link)
+    newBtn.setAttribute('target', '_blank')
+
+    content.classesMobile.forEach((currentClass) => {
+        newBtnMobile.classList.add(currentClass)
+    })
+    newBtnMobile.innerHTML = content.innerHTMLMobile
+    newBtnMobile.setAttribute('href', link)
+    newBtnMobile.setAttribute('target', '_blank')
+    
+    replaceElement({ elementToRemoveSelector: btnWpp, elementToReplaceSelector: newBtn })
+    replaceElement({ elementToRemoveSelector: btnWppMobile, elementToReplaceSelector: newBtnMobile })
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    if(isThisPage({ urlPiece: 'ago-seminovos/seminovos' }))
+        removeModalWpp()
+  });
+</script>

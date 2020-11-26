@@ -1,0 +1,36 @@
+<script type="text/javascript" src="https://legado.autoforce.com.br/mods/ebd/jeepway.js"></script>
+
+<!-- Ocultando grupo de páginas Oculto -->
+<script type="text/javascript">
+  function getElementByText(itemName) {
+    return $(".nav-simple ul.nav > li").filter(function(el) {
+      return $(el).text().includes(itemName);
+    })[0];
+  };
+  getElementByText("Oculto").remove();
+</script>
+
+
+<!-- HIDE NAS MINI LOGOS -->
+<script>
+$(document).ready(function(){
+$('#other_brands').hide();
+});
+</script>
+
+<script type="text/javascript" src="https://legado.autoforce.com.br/mods/ebd/telefones-jeepway.js"></script>
+
+<script type="text/javascript" src="https://legado.autoforce.com.br/mods/ebd/thai-whatsapp_v6.js"></script>
+
+<script>
+$('<br>').insertAfter('#popup-whats > div > li > a > b');
+if(isMobile()){
+$('#popup-whats > div.dropdown-menu').css({'width':'220px'});
+}
+</script>
+
+<!-- AJUSTE NOS TELEFONES -->
+<script>
+$('#phone > div > div > ul').css({'top':'30px'});
+$('#dLabel').css({'position':'absolute'});
+</script>

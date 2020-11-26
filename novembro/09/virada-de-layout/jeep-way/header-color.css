@@ -1,0 +1,7 @@
+header.header {
+  background-color: #1A1A1A;
+} 
+
+.header__navbar-item.header__networks > div { 
+  background-color: #333;
+}

@@ -1,0 +1,116 @@
+<!--  HEAD -->
+
+<script src="https://legado.autoforce.com.br/mods/pitstop-solutions/pitstop-0.0.5.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119744406-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-119744406-6');
+</script>
+
+<link rel="stylesheet" href="https://legado.autoforce.com.br/mods/plugins/phone/phone-sem-departamento.css">
+<link rel="stylesheet" href="https://assets.autoforce.com.br/mods/ebd/all-sites.css">
+
+<!-- AJUSTA POSIÇÃO DE BOTÃO WHATSAPP -->
+<style>
+#popup-whats{
+  right: 15px !important;
+  left: unset !important;
+}
+</style>
+
+<!-- Fim do HEAD -->
+
+<!-- FOOTER -->
+
+<script type="text/javascript" src="https://legado.autoforce.com.br/mods/ebd/menu-e-telefones-v3.js"></script>
+
+<!-- INSERE SCRIPT WHATSAPP -->
+<script type="text/javascript" src="https://legado.autoforce.com.br/mods/ebd/thai-whatsapp_v5.js"></script>
+
+<script>
+$('<br>').insertAfter('#popup-whats > div > li > a > b');
+if(isMobile()){
+$('#popup-whats > div.dropdown-menu').css({'width':'220px'});
+}
+$("#main-menu li:contains('Recordista')").hide();
+</script>
+
+<!-- INVERTE IMAGENS SEMINOVOS -->
+<script>
+if(window.location.pathname.includes('/seminovos/')){
+  setTimeout(function(){
+    $('#owl-gallery > div.owl-stage-outer > div > div:not(:nth-child(1))').each(function(i, li){
+      $(this).parent().prepend(li);
+    });
+    $('#owl-gallery > div.owl-stage-outer > div > div:last-child').insertBefore('#owl-gallery > div.owl-stage-outer > div > div:first-child');
+
+    $('#vehicle-gallery > div.owl-stage-outer > div > div:not(:nth-child(1))').each(function(i, li){
+      $(this).parent().prepend(li);
+    });
+    $('#vehicle-gallery > div.owl-stage-outer > div > div:last-child').insertBefore('#vehicle-gallery > div.owl-stage-outer > div > div:first-child');
+    $('#owl-gallery > div.owl-nav > button.owl-next').click();
+    setTimeout(function(){
+      $('#owl-gallery > div.owl-nav > button.owl-prev').click()
+    }, 1000); 
+  }, 2000)
+}
+</script>
+
+<script>
+sol.onReady(function () {
+  sol.selectAll('#list-items .item-service .post-content h3').containsURL('/servicos').contains(['Avaré']).map(function (item) {
+    return item.closest('[ga-event-category]');
+  }).forEach(function (item) {
+    return item.remove();
+  });
+});
+</script>
+
+<script>
+sol.onReady(function(){
+    $(".group-info ul").show();
+});
+</script>
+
+<!-- 31-03-20: Remove números de whatsapp do header -->
+<script>
+sol.onReady(function () {
+    sol.selectAll('.nav-1th .group-info ul > li')
+        .contains('Whats')
+        .hide();
+});
+</script>
+
+<!-- 11/09/2020: Trocar número do wpp da Marconi Cachoeirinha -->
+<script>
+const getMenuElementByText = ({listOfElements, elementText, elementTag}) => {
+    return [].find.call(listOfElements, (element) => {
+        const currentElement = element.querySelector(elementTag)
+        const currentElementText = currentElement.innerText.toUpperCase()
+        
+        return currentElementText.includes(elementText.toUpperCase())
+    });
+}
+
+const changeWpp = () => {
+    const listOfElementsWrapper = document.querySelector('#popup-whats')
+    const listOfElements = listOfElementsWrapper.querySelectorAll('li:not(.divider)')
+    const wppItem = getMenuElementByText({listOfElements, elementText: '99360-7100', elementTag: 'a'})
+    
+    const wppWrapper = wppItem.querySelector('a')
+    const oldInnerHTML = wppWrapper.innerHTML
+    const newInnerHTML = oldInnerHTML.replace('99360-7100', '99360-7336')
+
+    wppWrapper.innerHTML = newInnerHTML
+    wppWrapper.setAttribute('href', 'https://api.whatsapp.com/send?phone=5592993607336&text=Olá, Tudo bem?')
+}
+
+changeWpp()
+</script>
+
+<!-- Fim do FOOTER -->

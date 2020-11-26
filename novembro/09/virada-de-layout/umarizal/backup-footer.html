@@ -1,0 +1,30 @@
+<!-- Ocultando grupo de páginas Oculto -->
+<script type="text/javascript">
+  function getElementByText(itemName) {
+    return $(".nav-simple ul.nav > li").filter(function(el) {
+      return $(el).text().includes(itemName);
+    })[0];
+  };
+  getElementByText("Oculto").remove();
+</script>
+
+<script>
+/* REMOVE LOGO JCDR */
+$('body > header > div.nav-1th > div > div > h2').remove();
+$('body > header > div.nav-1th > div > div > div').toggleClass('col-md-9 col-md-10');
+</script>
+
+<script>
+$('#other_brands').hide();
+</script>
+
+<script type="text/javascript" src="https://legado.autoforce.com.br/mods/ebd/thai-whatsapp_v5.js"></script>
+
+<script>
+$('<br>').insertAfter('#popup-whats > div > li > a > b');
+if(isMobile()){
+$('#popup-whats > div.dropdown-menu').css({'width':'220px'});
+}
+</script>
+
+<script type="text/javascript" src="https://legado.autoforce.com.br/mods/ebd/telefones-cjdr.js"></script>

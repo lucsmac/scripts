@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
+
+    html, body, * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100vw;
+      min-height: 100vh;
+      background: #F5F5DC;
+    }
+
+    .d-block {
+      display: block !important;
+    }
+
+    .desappear {
+      animation-name: desappear;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes desappear {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+        display: block;
+      }
+    }
+
+    .cookies-popup-wrapper {
+      box-sizing: border-box;
+      position: fixed;
+      z-index: 9999;
+      display: none;
+      bottom: 0;
+
+      margin: 32px;
+      padding: 32px 64px;
+
+      background-color: #FFF;
+
+      border: 2px solid rgba(0, 0, 0, .1);
+      border-radius: 4px;
+      box-shadow: -3px 3px 8px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .cookies-popup-content {
+      display: flex;
+      align-items: center;
+    }
+
+    .cookies-popup-content p {
+      padding-right: 10%;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      line-height: 1.5;
+
+      opacity: 0.8;
+    }
+
+    .cookies-popup-content button {
+      flex-shrink: 0;
+
+      border: 0;
+      padding: 15px;
+      min-width: 25%;
+
+      background-color: #00C390;
+      color: #FFF;
+
+      cursor: pointer;
+
+      font-family: 'Roboto', sans-serif;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .cookies-popup-content a {
+      color: #006ECE;
+    }
+
+    @media screen and (max-width: 768px) {
+      .cookies-popup-wrapper {
+        margin: 16px;
+        padding: 32px;
+      }
+
+      .cookies-popup-content {
+        flex-direction: column;
+      }
+
+      .cookies-popup-content p {
+        padding-right: 0;
+        padding-bottom: 24px;
+      }
+      
+      .cookies-popup-content button {
+        width: 100%;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="cookies-popup-wrapper">
+    <div class="cookies-popup-content">
+      <p>Nós utilizamos cookies e outras tecnologias para possibilitar e aprimorar sua experiência em nosso site, e ao continuar navegando em nossas páginas você concorda com a coleta e uso de cookies. Para saber mais, visite nossa <a href="#" target="_blank">Política de Privacidade.</a></p>
+      <button class="btn-accept" type="button">Entendi e aceito!</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      const popup = document.querySelector('.cookies-popup-wrapper')
+      const privacyPolicyIsAccepted = localStorage.getItem('privacy-policy')
+      
+      if (privacyPolicyIsAccepted !== 'accepted') {
+        popup.classList.add('d-block');
+      }
+
+      document.querySelector('.btn-accept').addEventListener('click', function() {
+        localStorage.setItem('privacy-policy', 'accepted')
+        popup.classList.add('desappear');
+      })
+    });
+  </script>
+</body>
+</html>
