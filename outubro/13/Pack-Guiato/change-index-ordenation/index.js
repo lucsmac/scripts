@@ -15,7 +15,7 @@ const changeIndexOrdenation = () => {
 
   // vendas diretas para antes de seminovos
 
-  const directSales = document.querySelector('.section-component.carousel-direct-sales')
+  const directSales = document.querySelector('.section-component.services.carousel-services')
   const usedModels = document.querySelector('.section-component.used-models')
 
   moveSection(directSales, usedModels)

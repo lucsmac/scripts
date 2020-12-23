@@ -10,12 +10,12 @@
     .forEach(className =>
       newBtn.classList.add(className)
     )
-  newBtn.innerHTML = '<i class="icon icon-map"></i> Tour Virtual'
+  newBtn.innerHTML = '<img src="https://legado.autoforce.com.br/genius/images/360.png" style="width: 25px; margin-right: 7px"/> Tour Virtual'
   newBtn.style.setProperty('background-color', '#000')
   newBtn.style.setProperty('color', '#FFF')
 
   const btnMobileWrapper = document.createElement('div')
-  btnMobileWrapper.innerHTML = '<a href="https://sael.com.br/bmw-motorrad/empresa/faca-um-tour-pela-loja-3d" class="button-icon header__phones-button-toggler-mobile" style="background-color: #000;"><i class="icon icon-map"></i></button>'
+  btnMobileWrapper.innerHTML = '<a href="https://sael.com.br/bmw-motorrad/empresa/faca-um-tour-pela-loja-3d" class="button-icon header__phones-button-toggler-mobile" style="background-color: #000;"><img src="https://legado.autoforce.com.br/genius/images/360.png" style="width: 23px; margin-top: 3px"/></button>'
 
   wrapperDesktop.insertBefore(newBtn, wrapperDesktop.firstChild)
   wrapperMobile.insertBefore(btnMobileWrapper, wrapperMobile.firstChild)

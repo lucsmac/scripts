@@ -1,4 +1,4 @@
-const addContentBlock = (dealerName, links) => {
+const addFCAContentBlock = (dealerName, links) => {
   
   const addStyle = ({ styles }) => {
     const css = styles,
@@ -31,7 +31,7 @@ const addContentBlock = (dealerName, links) => {
       </li>
       <li>
         <a class="dealer-solutions__item dealer-solutions__item--2" href="${links[1]}">
-          Seviços    
+          Serviços    
         </a>
       </li>
       <li>

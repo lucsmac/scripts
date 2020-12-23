@@ -1,0 +1,186 @@
+<!-- 27/11/2020 - Adicionar carrossel de marcas -->
+<script type="module">
+  import Swiper from 'https://unpkg.com/swiper/swiper-bundle.esm.browser.min.js'
+
+  const changeCarouselHeader = (classCarousel, targetPicker) => {
+
+    const brandModel = ({url, link}) => `
+    <a class="footer-carousel-brands__item-link carousel-brands__item-link swiper-slide" target="_blank" href="${link}" style="height: 80px;"><img class="footer-carousel-brands__item-image carousel-brands__item-image" src="${url}" alt="Seminovo"></a>`
+
+    const urlImgs = [
+      {
+        url: 'https://production.autoforce.com/uploads/brand/logo_white/8/logo_brand_thumb_comprar-audi_e2c80bbe11.png',
+        link: 'http://audialphaville.com.br'
+      },
+      {
+        url: 'https://production.autoforce.com/uploads/brand/logo_white/18/logo_brand_thumb_logo_brand_jeep-branco_co_pia_74575a8da7.png',
+        link: '#'
+      },
+      {
+        url: 'http://legado.autoforce.com.br/mods/bexp/img/bexp_branca.png',
+        link: '#'
+      },
+    ]
+
+    // ===========================================================================================
+    
+    const carousel = document.createElement('div')
+    const carouselWrapper = document.createElement('div')
+
+    carousel.classList.add('swiper-container', classCarousel)
+    carouselWrapper.classList.add('swiper-wrapper')
+
+    urlImgs.forEach((brand, index) => {
+      const slide = document.createElement('div')
+      'footer-carousel-brands__item carousel-brands__item carousel__item swiper-slide'
+        .split(' ')
+        .forEach(currClass => slide.classList.add(currClass))
+
+      const slideContent = brandModel(brand)
+      slide.innerHTML = slideContent
+
+      carouselWrapper.appendChild(slide)
+    })
+
+    carousel.appendChild(carouselWrapper)
+
+    const target = document.querySelector(targetPicker)
+    target.classList.remove('swiper-container-initialized', 'swiper-container-horizontal')
+    target.innerHTML = ''
+    target.appendChild(carousel)
+
+    const headerBrandsSwiper = new Swiper('.header-carousel-brands', {
+      loop: true,
+      autoplay: true,
+      slidesPerView: 4.5,
+      spaceBetween: 5,
+      breakpoints: {
+        576: {
+          slidesPerView: 5.5,
+          spaceBetween: 10
+        },
+        767: {
+          slidesPerView: 6.5,
+          spaceBetween: 20
+        },
+        992: {
+          slidesPerView: 8,
+          spaceBetween: 30
+        }
+      }
+    })
+  }
+
+  const carouselClass = 'header-carousel-brands'
+  const target = '.carousel-brands .carousel'
+
+  const carouselFooterClass = 'header-carousel-brands'
+  const targetlFooter = '.footer-carousel-brands.carousel-brands .carousel'
+
+  changeCarouselHeader(carouselClass, target)
+  changeCarouselHeader(carouselFooterClass, targetlFooter)
+</script>
+
+<!-- 27/11/2020 - Adicionar carrossel de marcas -->
+<script type="module">
+  import Swiper from 'https://unpkg.com/swiper/swiper-bundle.esm.browser.min.js'
+
+  const changeCarouselHeader = () => {
+
+    const brandModel = ({url, link}) => `
+    <a class="footer-carousel-brands__item-link carousel-brands__item-link swiper-slide" target="_blank" href="${link}" style="height: 80px;"><img class="footer-carousel-brands__item-image carousel-brands__item-image" src="${url}" alt="Seminovo"></a>`
+
+    const urlImgs = [
+      {
+        url: 'https://production.autoforce.com/uploads/brand/logo_white/8/logo_brand_thumb_comprar-audi_e2c80bbe11.png',
+        link: 'http://audialphaville.com.br'
+      },
+      {
+        url: 'https://production.autoforce.com/uploads/brand/logo_white/18/logo_brand_thumb_logo_brand_jeep-branco_co_pia_74575a8da7.png',
+        link: '#'
+      },
+      {
+        url: 'http://legado.autoforce.com.br/mods/bexp/img/bexp_branca.png',
+        link: '#'
+      },
+    ]
+
+    // ===========================================================================================
+    
+    const carousel = document.createElement('div')
+    const carouselWrapper = document.createElement('div')
+
+    carousel.classList.add('swiper-container', 'header-carousel-brands')
+    carouselWrapper.classList.add('swiper-wrapper')
+
+    urlImgs.forEach((brand, index) => {
+      const slide = document.createElement('div')
+      'footer-carousel-brands__item carousel-brands__item carousel__item swiper-slide'
+        .split(' ')
+        .forEach(currClass => slide.classList.add(currClass))
+
+      const slideContent = brandModel(brand)
+      slide.innerHTML = slideContent
+
+      carouselWrapper.appendChild(slide)
+    })
+
+    carousel.appendChild(carouselWrapper)
+
+    const target = document.querySelector('.carousel-brands .carousel')
+    target.classList.remove('swiper-container-initialized', 'swiper-container-horizontal')
+    target.innerHTML = ''
+    target.appendChild(carousel)
+
+    const headerBrandsSwiper = new Swiper('.header-carousel-brands', {
+      loop: true,
+      autoplay: true,
+      slidesPerView: 4.5,
+      spaceBetween: 5,
+      breakpoints: {
+        576: {
+          slidesPerView: 5.5,
+          spaceBetween: 10
+        },
+        767: {
+          slidesPerView: 6.5,
+          spaceBetween: 20
+        },
+        992: {
+          slidesPerView: 8,
+          spaceBetween: 30
+        }
+      }
+    })
+  }
+
+  changeCarouselHeader()
+</script>
+
+<!-- 27/11/2020 - Ajustes no carrossel do header-->
+<script>
+(() => {
+    document.addEventListener("DOMContentLoaded", function(event) {
+        const carousel = document.querySelector('.carousel-brands')
+        if(carousel)
+            carousel.style.setProperty('background', '#111')
+        
+        const wrapper = document.querySelector('.header-carousel-brands .swiper-wrapper')
+        if(wrapper) {
+            wrapper.style.setProperty('display', 'flex')
+            wrapper.style.setProperty('justify-content', 'space-around')
+            wrapper.style.setProperty('transform', 'translate3d(0, 0, 0)')
+    
+            wrapper.innerHTML = `
+            <div class="footer-carousel-brands__item carousel-brands__item carousel__item swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="0" role="group" aria-label="1 / 9" style="width: 112.5px; margin-right: 30px;">
+            <a class="footer-carousel-brands__item-link carousel-brands__item-link swiper-slide" target="_blank" href="http://audialphaville.com.br" style="height: 80px;"><img class="footer-carousel-brands__item-image carousel-brands__item-image" src="https://production.autoforce.com/uploads/brand/logo_white/8/logo_brand_thumb_comprar-audi_e2c80bbe11.png" alt="Seminovo"></a></div>
+            <div class="footer-carousel-brands__item carousel-brands__item carousel__item swiper-slide swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="1" role="group" aria-label="2 / 9" style="width: 112.5px; margin-right: 30px;">
+            <a class="footer-carousel-brands__item-link carousel-brands__item-link swiper-slide" target="_blank" href="#" style="height: 80px;"><img class="footer-carousel-brands__item-image carousel-brands__item-image" src="https://production.autoforce.com/uploads/brand/logo_white/18/logo_brand_thumb_logo_brand_jeep-branco_co_pia_74575a8da7.png" alt="Seminovo"></a></div>
+            <div class="footer-carousel-brands__item carousel-brands__item carousel__item swiper-slide swiper-slide-duplicate swiper-slide-next" data-swiper-slide-index="2" role="group" aria-label="3 / 9" style="width: 112.5px; margin-right: 30px;">
+            <a class="footer-carousel-brands__item-link carousel-brands__item-link swiper-slide" target="_blank" href="#" style="height: 80px;"><img class="footer-carousel-brands__item-image carousel-brands__item-image" src="http://legado.autoforce.com.br/mods/bexp/img/bexp_branca.png" alt="Seminovo"></a></div>
+            `
+        }
+    })
+})()
+</script>
+

@@ -49,7 +49,7 @@
         addStyle({
           styles: `
             .default-bg__new_vehicle {
-              background-image: url("${DataElement.imgLink}");
+              background-image: url("${DataElement.img_link}");
             }
           `
         })

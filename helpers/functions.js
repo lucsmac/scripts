@@ -92,3 +92,16 @@ const moveSection = (elToMove, elRef) => {
     
     ref.parentNode.insertBefore(el, ref)
 }
+
+const lastDayOfMonth = () => { 
+    const addZero = (number) => String(number).length == 1 ? `0${0}` : number
+
+    const today = new Date()
+    const lastDayDirtyTemplate = new Date(today.getFullYear(), today.getMonth() + 1, 0)
+    const day = addZero(lastDayDirtyTemplate.getDate())
+    const month = addZero(lastDayDirtyTemplate.getMonth() + 1)
+    const year = lastDayDirtyTemplate.getFullYear()
+    const lastDay = `${day}/${month}/${year}`
+    
+    return lastDay
+}

@@ -1,0 +1,116 @@
+<script>
+  var linkTerms = $(".terms-link"),
+      modalTerms = $("#modal-offer-conditions"),
+      legalText = $(".showcase-offer__legal-text.legal-text");
+  if (linkTerms.length > 0 && modalTerms.length > 0 && legalText.length > 0) {
+    $(linkTerms).remove();
+    $(legalText).append('<br>**'+$(modalTerms).text());
+    $(legalText).css({
+      "font-size": "10px",
+      "line-height": "1.3em",
+      "text-align": "justify"
+    });
+  }
+</script>
+
+<script>
+$(document).ready(function() {
+    $('.list-consortia__subtitle').text('Número 1 em vendas de Consórcio Chevrolet no Brasil, por 12 anos!');
+});
+</script>
+
+<!-- 16/09/2020 - Remover CPF de todos os formulários, menos os de financiamento -->
+<script>
+const isThisPage = ({ urlPiece }) => {
+  const fullURL = window.location.href
+  const result = fullURL.includes(urlPiece)
+
+  return result
+}
+
+const hideCPF = () => {
+  const cpfInput = document.querySelector('[name="cpf"]')
+  
+  if(cpfInput)
+    cpfInput.parentNode.removeChild(cpfInput)
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  if(!isThisPage({ urlPiece: 'financiamento'}))
+    hideCPF()
+});
+
+</script>
+
+<!-- 06/10/20 - Alteração de texto legal em Serviços (Troca de óleo) -->
+<script>
+if(window.location.pathname.includes('/oferta-servico/751')){
+document.querySelectorAll('.legal-text').forEach( function (legal) {
+legal.innerText = "* Oferta válida para troca de óleo do motor conforme especificação (lubrificante indicado para cada veículo) e quantidade (litros utilizados na troca) recomendadas no manual do proprietário para veículos Chevrolet com motorização 1.0, 2.0 ou 1.4 (exceto motores TURBO) com Anel código 11023589: valor total, com mão de obra inclusa, em 6 (seis) parcelas mensais de R$ 23,90 ou R$ 143,40,00 à vista com filtro de óleo (Filtro 93370535) grátis. Condições e valores válidos para agendamentos realizados nas Concessionárias Javep das cidades de Jaú, Marília, São Carlos e São José do Rio Preto até 30/10/2020. Parcelamento somente nos cartões de crédito. Consulte cartões de créditos aceitos na Javep. Imagens meramente ilustrativas. A Javep se reserva o direito de eventuais erros nesse anúncio. Consulte condições na Javep."
+})
+}
+</script>
+
+<!-- 18/09/2020 - Mudar texto legal em Novos, Ofertas, Ofertas únicas e Seminovos-->
+<script>
+(() => {
+  const changeLegalText = () => {
+    const newText = `Esta Concessionária Javep Veículos, Peças e Serviços Ltda, atua como Concessionária de Veículos devidamente cadastrada junto à Rede de Concessionários Chevrolet, na condição de Correspondente no País do Banco GM S.A., conhecida no mercado como Chevrolet Serviços Financeiros, nos termos da Resolução n.º 3954 do Banco Central do Brasil, desenvolvendo atividades de atendimento a clientes e usuários, executando serviços de recepção e encaminhamento de propostas. Produtos Ofertados: 1) Financiamento (FDU); 2) Arrendamento Mercantil (Leasing). Tarifas Máximas – Serviços Bancários Pessoa Física e Jurídica: 1) Confecção de Cadastro R$ 729,00; 2) Avaliação, Reavaliação e Substituição de Bens em Garantia R$ 660,00. Vigência a partir de 01/10/2019.
+    
+    SITE: www.chevroletsf.com.br | FALE CONOSCO: faleconosco.financiamento@gmfinancial.com.
+    
+    Central de Relacionamento com o Cliente 0800 728 0613 | De 2ª a 6ª feira, das 8h às 20h | Atendimento Eletrônico 24h.
+    
+    SAC 0800 721 5394 | Deficientes Auditivos 0800 727 0640 (Para informações sobre nossos produtos e serviços, reclamações, cancelamentos ou elogios).
+    
+    OUVIDORIA 0800 722 6022 | E-mail ouvidoria@gmfinancial.com (Necessário contato prévio na Central de Relacionamento com o Cliente ou SAC, será solicitado protocolo).
+    
+    Guia de Crédito Consciente (dicas para que você tenha uma vida financeira saudável e organizada) - www.chevroletsf.com.br/guia-de-crédito-consciente/introdução.`
+    
+    const position = document.querySelector('.footer__separator')
+    const legalTextWrapper = document.createElement('div')
+    legalTextWrapper.style.setProperty('font-size', '11px')
+    legalTextWrapper.classList.add('footer-legal_text')
+    legalTextWrapper.innerHTML = newText
+
+    position.parentNode.insertBefore(legalTextWrapper, position.nextSibling)
+  }
+    
+  if(isThisPage({ urlPiece: 'ofertas' }) || isThisPage({ urlPiece: 'seminovos' }) || isThisPage({ urlPiece: 'novos' }) || isThisPage({ urlPiece: 'ofertas-unicas' })) {
+    changeLegalText()
+  }
+})()
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 22/07/2020 - Reduzindo fonte dos menus -->
+<style>
+  .nav-simple ul.nav > li {
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+  .nav-simple ul.nav a {
+      font-size: 14px;
+  }
+  @media screen and (max-width: 768px) {
+      .nav--accordion-mobile .nav-simple__link {
+          padding-top: 10px !important;
+          padding-bottom: 10px !important;
+      }
+  }
+  </style>

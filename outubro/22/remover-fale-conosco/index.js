@@ -1,5 +1,8 @@
-(() => {
-const faleConoscoItem = document.querySelector('.nav-item [href="/brasao-caminhoes-e-implementos-a7076f62-e3db-4bc0-986d-f865e76262c1/fale-conosco"]')
+  (() => {
+    const elementToHide = document.querySelector('#codecheat%seletor')
 
-faleConoscoItem.parentNode.removeChild(faleConoscoItem)
-})()
+    const url = '#codecheat%url_selector'
+    
+    if(window.location.href.includes(url))
+      elementToHide.parentNode.removeChild(faleConoscoItem)
+  })()
