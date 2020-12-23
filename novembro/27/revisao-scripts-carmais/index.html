@@ -1,0 +1,155 @@
+<!-- FOOTER -->
+
+<script type="text/javascript" src="//legado.autoforce.com.br/mods/carmais/portal_v5.js"></script>
+
+<script type="text/javascript" src="//legado.autoforce.com.br/mods/carmais/carmportal2.js"></script>
+
+<!-- 01/06/20 - Redirecionando nav para o portal de seminovos -->
+<script>
+    document.querySelector('[href="/seminovos"]').href = "http://carmaisseminovos.com.br/";
+</script>
+
+<script>
+$(function() {
+    if (location.href.indexOf("/empresa/campanha") >= 0) {
+
+        $("#content > div > div:nth-child(2) > div.col-xs-12.col-sm-7").remove()
+
+        $("#content > div > div:nth-child(2) > div").toggleClass("col-sm-12");
+
+        $("#content > div > div > div").css({
+            'display': 'flex',
+            'align-content': 'center',
+            'justify-content': 'center',
+            'width':'none !important',
+        });
+
+        $("#content > div > div > div").css({
+            'width':'none !important;',    
+        })
+
+    }
+});
+</script>
+
+<!-- INSERE BANNER NA PÁGINA DE OFERTAS -->
+<script>
+/*if(window.location.pathname.includes('/ofertas')){
+  $('<section id="banner-frankstein"><div class="container-fluid" style="background-image: url(//legado.autoforce.com.br/mods/carmais/img/patrocinado_48h.png);height: 800px;background-size: cover;"></div></section>').insertBefore('#pageview-product-list');
+}*/
+</script>
+
+
+<script>
+$("#catchy_phrase > div > div > div > div > hgroup > h4").text('Conheça as nossas melhores ofertas');
+
+var pathname = window.location.pathname; // Returns path only
+var url      = window.location.href;     // Returns full URL
+
+if (pathname.indexOf('trailblazer-2-8-ltz-4x4-16v-turbo-diesel-4p-automatico') > -1){
+	$('#pageview-product > div > div.row > div > div.col-xs-12.col-sm-4.product-box-action > div.form-module').after('<a href="https://carmais.com.br/empresa/avalie" style="margin-top: 10px;text-align: center;display: block;background: #000;padding: 20px;border-radius: 10px;font-size: 14px;color: #fff;text-transform: uppercase;font-weight: bold;">Avalie seu Usado</a>');
+}
+
+</script>
+
+<!-- ALTERAR DROPDOWN DE NÚMEROS, DEIXAR UM ÚNICO N° DA CENTRAL -->
+<script>
+$('#phones-main > button').replaceWith('<a type="button" href="tel:(85) 3306-8889 " class="btn btn-default menu-accordion-toggle" ga-on="click" ga-event-category="Menu de Telefones"><span class="fa fa-phone icon"></span> (85) 3306-8889</a>');
+</script>
+
+<!-- 11-02-20: Modifies seminovos text -->
+<script>
+sol.onReady(function () {
+  sol.select('#pageview-product').containsURL('/seminovos/').selectFrom('.product-store').forEach(function (container) {
+    var header = container.querySelector("h5");
+    var addressText = container.querySelector('h6');
+
+    if (header.textContent.toUpperCase() === 'NOVALUZ S.D.') {
+      header.textContent = 'NOVALUZ W.S.';
+      addressText.textContent = 'Av. Washington Soares, 2891 - Edson Queiroz - Fortaleza-CE';
+    } else if (header.textContent.toUpperCase() === 'NOVALUZ B.S.') {
+      header.textContent = 'CARMAIS SEMINOVOS';
+      addressText.textContent = 'Av Barão de Studart, 1846, Aldeota - Fortaleza-CE';
+    }
+  });
+});
+</script>
+
+
+<!-- 13-02-20: Changes ofertas link when user is in seminovos -->
+<script>
+sol.onReady(function () {
+  sol.selectAll('#showcase ul.navbar-nav > li a').contains('Ofertas').containsURL('/seminovos').forEach(function (item) {
+    return item.href = '/seminovos/resultado';
+  });
+});
+</script>
+
+<!-- 13-02-20: Adds maps link to internal seminovos page -->
+<script>
+sol.onReady(function () {
+    var parseAddressInfo = function parseAddressInfo(text) {
+        var info = text.split('-');
+        return { address: info[0], district: info[1], city: info[2], state: info[3], };
+    };
+
+    sol.select('#pageview-product .product-store').containsURL('/seminovos/').forEach(function (container) {
+        var companyText = container.querySelector('h5');
+        var addressText = container.querySelector('h6');
+
+        var addressLink = document.createElement('a');
+        var companyName = companyText.textContent;
+        var addrInfo = parseAddressInfo(addressText.textContent);
+        addressLink.href = "http://maps.google.com/#!q=".concat(companyName, ",").concat(addrInfo.address, ",").concat(addrInfo.city, ",").concat(addrInfo.state);
+        addressLink.target = '_blank';
+
+        var mapLink = addressLink.cloneNode(true);
+        var mapText = document.createElement('p');
+        mapText.textContent = 'Ver no mapa';
+
+        mapLink.append(mapText);
+        addressLink.append(addressText.cloneNode(true));
+
+        container.insertBefore(addressLink, addressText);
+        container.insertBefore(mapLink, addressText);
+        addressText.remove();
+    });
+});
+</script>
+
+<!-- 17-03-20: Adiciona Honda e Ford no dropdown de consórcios -->
+<script>
+sol.onReady(function () {
+  function addConsorciosDropdown(brandName, stores) {
+    var dropdownContainer = sol.selectAll('.nav-wrapper-menu ul.nav > li')
+      .contains('Consórcios').find('.dropdown-menu .row');
+
+    var newItem = dropdownContainer.ref().find('.dropdown-submenu')
+      .clone(true).forEach(function (item) {
+        var itemLink = item.querySelector('.dropdown-submenu-title strong');
+        var itemText = itemLink.childNodes[0];
+        itemText.textContent = brandName;
+        var submenuLinks = item.querySelectorAll('li:not(.dropdown-submenu-title)');
+
+        function addSubmenuLink(store) {
+          var submenuLinkClone = submenuLinks[0].cloneNode(true);
+          var submenuLinkText = submenuLinkClone.querySelector('a');
+          submenuLinkText.childNodes[0].textContent = store.title;
+          submenuLinkText.href = store.url;
+          submenuLinks[0].before(submenuLinkClone);
+        };
+
+        stores.forEach(addSubmenuLink);
+        submenuLinks.forEach(function (item) {
+          return item.remove();
+        });
+      });
+
+    var clearfix = dropdownContainer.find('.clearfix');
+    clearfix.before(newItem.nodes());
+  };
+
+  addConsorciosDropdown('Ford ', [{ title: 'Ford Jangada', url: 'https://www.jangadaford.com.br/consorcio' }]);
+  addConsorciosDropdown('Honda ', [{ title: 'Honda Novaluz', url: 'https://www.carmais.com.br/hondanovaluz/consorcios' }]);
+});
+</script>
