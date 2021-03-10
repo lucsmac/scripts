@@ -1,0 +1,87 @@
+<!-- INICIO DO SCRIPT DE WHATSAPP-->
+<script type="text/javascript">
+  //TROQUE O NUMERO E NOME DO TELEFONE AQUI - FORMATO: DDD NUMERO
+  telefone1 = '1132305091';
+  tituloTelefone1 = 'Novos';
+
+  telefone2 = '11947498658';
+  tituloTelefone2 = 'Seminovos';
+
+  telefone3 = '11988699414';
+  tituloTelefone3 = 'Pós-Vendas';
+  //TROQUE A MENSAGEM, EDITANDO O TEXTO DENTRO DAS ASPAS
+  mensagem = "Olá, tudo bem?";
+
+  //TROQUE O TÍTULO, EDITANDO O TEXTO DENTRO DAS ASPAS
+  tituloBotao = "Fale pelo WhatsApp";
+</script>
+
+<script type="text/javascript" src="https://legado.autoforce.com.br/mods/plugins/WhatsApp/botao-whats-multiple_v2.js"></script>
+<!-- FIM DO SCRIPT DE WHATSAPP-->
+
+
+<script type="text/javascript" src="//legado.autoforce.com.br/mods/bexp/audi.js"></script>
+
+<!-- INSERIR Q8 e REMOVER A1 E A8 -->
+<script>
+
+$("#main-menu > ul > li:contains('A1')").hide()
+
+$("#main-menu > ul > li:contains('A8')").hide()
+
+$('<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Q8</a><ul class="dropdown-menu"><li><a href="/novos/q8">Q8</a></li></ul></li>').insertAfter("#main-menu > ul > li:contains('Q7')")
+</script>
+
+
+<!-- Adiciona E-Tron à barra de navegação -->
+<script>
+sol.onReady(function () {
+
+  function dropdownLink(title, href) {
+      var liItem = document.createElement('li');
+      var linkItem = document.createElement('a');
+      linkItem.textContent = title;
+      linkItem.href = href;
+
+      liItem.append(linkItem);
+      return liItem;
+  };
+
+  var dropdownClone =
+      sol.selectAll('.nav-2th .navbar-nav > .dropdown')
+          .contains('A3')
+          .clone(true);
+
+  sol.select('.nav-2th ul.navbar-nav').append(dropdownClone.nodes());
+
+  dropdownClone.ref().find('.dropdown-toggle')
+      .setText('E-Tron');
+
+  dropdownClone.ref()
+      .find('ul.dropdown-menu')
+      .setHTML('')
+      .append([
+          dropdownLink('E-Tron Performance 55 Quattro', '/novos/e-tron/performance-55-quattro'),
+          dropdownLink('E-Tron Performance Black 55 Quattro', '/novos/e-tron/performance-black-55-quattro'),
+      ]);
+});
+</script>
+
+<!-- 15-05-20: Força carrossel a dar autoplay -->
+<script>
+$(document).ready(function() {
+  $('#owl-showcase').trigger('play.owl.autoplay');
+});
+</script>
+
+<!-- 22/09/2020 - Remover seção Outras marcas do carrossel -->
+<script>
+const removeOtherBrands = () => {
+const otherBrands = document.querySelector('#other_brands')
+otherBrands.parentNode.removeChild(otherBrands)
+}
+
+removeOtherBrands()
+</script>
+
+

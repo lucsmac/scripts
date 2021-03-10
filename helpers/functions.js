@@ -52,7 +52,7 @@ const isThisPage = ({ urlPiece }) => {
     return fullURL.includes(urlPiece)
 }
 
-const addStyle = ({ styles }) => {
+const addStyle = (styles) => {
     const css = styles,
         head = document.head || document.getElementsByTagName('head')[0],
         style = document.createElement('style');

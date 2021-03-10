@@ -80,10 +80,12 @@
           justify-content: center;
           align-items: center;
           list-style: none;
+          width: 100%;
         }
 
         .services__item {
-          width: 350px;
+          width: 100%;
+          max-width: 350px;
           height: 350px;
           transition: all .2s ease;
         }
@@ -137,15 +139,19 @@
         }
   
         @media screen and (max-width: 992px) {
-
+          .services__item {
+            height: 300px;
+          }
         }
   
         @media screen and (max-width: 768px) {
-
+          .services__item {
+            height: 250px;
+          }
         }
       `
     })
   }
 
-  addContentBlock(['#', '#', '#'])
+  addContentBlock(window.servicesBlockContent)
 })()

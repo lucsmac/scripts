@@ -1,4 +1,6 @@
 (() => {
+  const t0 = performance.now()
+
   const addStyle = ({ styles }) => {
     const css = styles,
         head = document.head || document.getElementsByTagName('head')[0],
@@ -71,7 +73,7 @@
 
       .filter-pills__options-text.active, .filter-pills__options-text:hover {
         color: #000 !important;
-        font-weight: 300 !important;
+        font-weight: 400 !important;
         border-bottom: 2px solid #B11316;
       }
 
@@ -79,17 +81,10 @@
         display: none !important;
       }
 
-
-      .vehicles-new__carousel .carousel__item {
-        margin-right: 40px;
-        width: 300px !important;
-      }
-
       .vehicles-new__carousel .card.card--simple {
         border: 1px solid transparent;
         padding: 18px 10px;
         transition: all .2s ease;
-        width: 300px;
       }
 
       .vehicles-new__carousel .card.card--simple:hover {
@@ -100,16 +95,18 @@
         height: 100%;
         display: flex;
         align-items: flex-end;
+        padding: 0;
       }
 
       .vehicles-new__carousel .card.card--simple .btn {
         background-color: #DE2326;
-        padding: 10px 40px;
         border-radius: 30px;
         color: #FFF;
         opacity: 0;
         transition: all .2s ease;
-        margin-top: 30px
+        margin-top: 10px;
+        padding: 6px 20px;
+        width: 100%;
       }
 
       .vehicles-new__carousel .card.card--simple:hover .btn {
@@ -131,6 +128,18 @@
         display: none;
       }
 
+      .vehicles-new__carousel .card__content {
+        padding: 0;
+      }
+
+      .vehicles-new__carousel .card .card__title {
+        min-height: 36px;
+      }
+
+      .vehicles-new__carousel .carousel__item {
+        min-height: 246px;
+      }
+
 
 
 
@@ -143,8 +152,12 @@
         height: 400px;
       }
 
-      .used-models__carousel.carousel, .offers-used-models__carousel.carousel {
-        height: 450px !important;
+      .used-models__carousel.carousel, .offers-used-models__carousel.carousel, .list-used-models__list .row .col-md-6 {
+        height: 480px !important;
+      }
+
+      .list-used-models__list .card:hover {
+        height: 460px !important;
       }
 
       .card.card--used-model {
@@ -186,9 +199,9 @@
         background-color: #B11316;
       }
 
-      .card--used-model:hover .card__cta-used-model {
+      .card:hover .btn.button.card__cta {
+        display: inline-flex;
         opacity: 1;
-        display: block;
         transition: all .2s ease;
       }
 
@@ -227,7 +240,7 @@
         font-weight: 300;
       }
 
-      .card--used-model .card__list.list li:before {
+      .card--used-model .card__list.list li::before, .list-used-models__list .card__list .card__list-item::before {
         content: "\\ea0a";
         font-family: auto-icons!important;
         color: #DE2326;
@@ -237,13 +250,28 @@
         border-radius: 10px;
         border: 1px solid #DE2326;
         background: transparent;
-        display: flex;
+        display: inline-flex;
         justify-content: center;
         align-items: center;
       }
 
-      .used-models__item.carousel__item {
-        width: 280px !important;
+      .list-used-models__list .card__list .card__list-item::before {
+        margin-right: 10px;
+        top: -2px;
+        position: relative;
+      }
+  
+
+      .list-used-models__list .card__list .card__list-item {
+        padding: 5px 0;
+      }
+
+      .list-used-models__list .card__list {
+        padding: 0;
+      }
+
+      .card--used-model .card__list {
+        list-style-type: none;
       }
 
       .card--used-model .card__content div[data-match-height="carousel-used-model-list"] {
@@ -255,11 +283,24 @@
           background: #494E53;
           height: auto;
         }
+
+        .vehicles-new__carousel .card.card--simple .btn {
+          opacity: 1;
+        }
+
+        .card--used-model .card__cta-used-model {
+          opacity: 1;
+          display: block;
+          transition: all .2s ease;
+        }
       }
     `
   })
 
   const cardList = document.querySelectorAll('.card--used-model .card__list li')
   Array.prototype.forEach.call(cardList, (item) => item.innerHTML = item.innerHTML.replace(':', ''))
+
+  const t1 = performance.now()
+  console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
   
 })()

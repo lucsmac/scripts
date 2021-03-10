@@ -40,6 +40,10 @@
       background-color: transparent;
     }
 
+    .header__navbar .header__networks-list .icon {
+      color: #000;
+    }
+
     .header__navbar .header__networks-list .icon:hover {
       color: #DE2326;
     }

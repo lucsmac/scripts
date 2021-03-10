@@ -1,0 +1,493 @@
+.header {
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0,0,0,.15);
+  position: relative;
+  z-index: 9999;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.dealer-logo {
+  height: 27px;
+}
+
+.header__dealer-name {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.car-hero__title {
+  background-color: #FAFAFA;
+}
+
+.car-hero__title-inner {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.car-hero__title-inner h1 {
+  font-size: 2.5rem;
+}
+
+.car-hero__title-inner p {
+  padding: 0.2rem 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #666666;
+  margin-left: 20px;
+}
+
+.car-hero__content {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #FFF;
+}
+
+.car-hero__content .container {
+  display: flex;
+  flex-direction: column;
+}
+
+.car-hero__info {
+  font-weight: 100;
+  color: #666;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+}
+
+.car-hero__price {
+  padding: .7rem 0 .5rem 1.5rem;
+  border-left: 2px solid rgb(194, 194, 194);
+  font-size: 1.2rem;
+}
+
+.car-hero__image {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.offer-description {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 50px;
+
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 3px solid #333333;
+  border-bottom: 1px solid #E1E1E1;
+
+  color: #333333;
+}
+
+.offer-description h2 {
+  font-size: 2.5rem;
+}
+
+.offer-description p {
+  color: #666;
+  line-height: 1.5;
+}
+
+/* vídeo */
+
+.video-gallery {
+  padding: 2rem 0;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+.video-gallery h2 {
+  font-size: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+.video-gallery .video {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-gallery .video iframe,
+.video-gallery .video object,
+.video-gallery .video embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ficha tecnica */
+
+.technical-sheet__title {
+  font-size: 2rem;
+  padding: 1.5rem 0 2.5rem 0;
+}
+
+.technical-sheet__highlights {
+  display: flex;
+  box-shadow: 0 2px 4px rgba(0,0,0,.15);
+}
+
+.technical-sheet__highlight {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  align-items: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  background-color: #FFF;
+}
+
+.technical-sheet__highlight + .technical-sheet__highlight {
+  border-left: 1px solid #E1E1E1;
+}
+
+.technical-sheet__highlight svg {
+  max-width: 28px;
+  max-height: 28px;
+  justify-self: center;
+}
+
+.technical-sheet__highlight svg path {
+  fill: #212529;
+}
+
+.technical-sheet__highlight .hightlight--text {
+  display: flex;
+  flex-direction: column;
+}
+
+.technical-sheet__highlight .hightlight--text h3 {
+  color: #666;
+  font-size: 14px;
+  padding-bottom: .5rem;
+}
+
+.technical-sheet__highlight .hightlight--text p {
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.technical-sheet__highlight .hightlight--text p span {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* ficha técnica - tabela */
+
+.technical-table {
+  margin-top: 2rem;
+  padding: 3rem 2rem;
+
+  background-color: #FFF;
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  column-gap: 2rem;
+}
+
+.technical-table__car-identifier {
+  padding: 0 1rem;
+}
+
+.technical-table__car-identifier h3 {
+  font-weight: bold;
+  font-size: 1.75rem;
+  color: #333;
+}
+
+.technical-table__car-identifier p {
+  font-weight: bold;
+  font-size: .8rem;
+  color: #333;
+  font-weight: 100;
+}
+
+.technical-table__car-identifier img {
+  width: 100%;
+}
+
+.technical-table__car-data {
+  padding: 0 1rem;
+}
+
+.car-data--header {
+  display: flex;
+  list-style-type: none;
+  width: 100%;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+.car-data--header-item {
+  flex: 1;
+  font-weight: 100;
+  color: #666;
+  cursor: pointer;
+}
+
+.car-data--header-item p {
+  display: inline-flex;
+  padding: 0 .3rem .8rem;
+  transition: all .2s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.car-data--header-item:hover p {
+  color: #2c5cd0;
+}
+
+.car-data--header-item.active p {
+  font-weight: bold;
+  border-bottom: 3px solid #2c5cd0;
+}
+
+.car-data--content {
+  padding-top: 1.5rem;
+}
+
+.car-data--content-item {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 12px;
+  column-gap: 15px;
+}
+
+.car-data--content-item.active {
+  display: grid;
+}
+
+.car-data--content-item p {
+  font-size: 14px;
+}
+
+/* galeria de imagens */
+
+.images-gallery {
+  padding: 2rem 0;
+}
+
+.images-gallery h2 {
+  font-size: 2rem;
+  padding-bottom: 2rem;
+}
+
+.images-gallery__current {
+  width: 100%;
+  max-height: 620px;
+  overflow: hidden;
+}
+
+.images-gallery__current img {
+  max-width: 100%;
+  display: block;
+}
+
+.images-gallery__nav {
+  margin-top: 12px;
+}
+
+.images-gallery__nav-item {
+  filter: brightness(40%);
+  transition: all .3s ease;
+  
+  cursor: pointer;
+}
+
+.images-gallery__nav-item.active, .images-gallery__nav-item:hover {
+  filter: brightness(100%);
+}
+
+.images-gallery__nav-item img {
+  width: 240px;
+  height: 150px;
+}
+
+.images-gallery__nav-item + .images-gallery__nav-item {
+  margin-left: 12px;
+}
+
+.slick-prev {
+  left: 10px !important;
+}
+
+.slick-next {
+  right: 25px !important;
+}
+
+.slick-prev, .slick-next {
+  background-color: #000;
+  border-radius: 100px;
+  padding: 10px;
+  font-size: 15px !important;
+  z-index: 99999;
+}
+
+.slick-prev::before, .slick-next::before {
+  background-color: #000;
+  border-radius: 100px;
+  padding: 10px;
+  font-size: 15px !important;
+  transition: all .2s ease;
+}
+
+.slick-prev:hover::before, .slick-next:hover::before {
+  background-color: #444;
+}
+
+/* footer */
+
+.footer {
+  margin-top: 4rem;
+  padding: 2rem 0;
+  background-color: #333;
+}
+
+.footer .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.footer .copyright p {
+  color: #999;
+  line-height: 1.1;
+}
+
+.footer .copyright a {
+  color: #999;
+}
+
+.footer .footer__logo {
+  justify-self: center;
+}
+
+.footer .social-media {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+}
+
+.footer .social-media p {
+  text-transform: uppercase;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.footer .social-media ul {
+  list-style: none;
+  display: flex;
+  min-width: 150px;
+}
+
+.footer .social-media ul li {
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #666;
+  border-radius: 30px;
+  flex: 1;
+  transition: all .2s ease;
+}
+
+.footer .social-media ul li:hover {
+  background-color: #2c5cd0;
+}
+
+.footer .social-media ul li + li {
+  margin-left: 5px;
+}
+
+.footer .social-media ul li a {
+  line-height: 0;
+}
+
+.footer svg {
+  width: 18px;
+  max-height: 18px;
+}
+
+.footer svg path {
+  fill: #FFF;
+}
+
+@media screen and (max-width: 800px) {
+  .offer-description {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+
+  .technical-sheet__highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .technical-sheet__highlight {
+    border-bottom: 1px solid #E1E1E1;
+  }
+
+  .technical-table {
+    grid-template-columns: 1fr;
+    padding: 2rem 0;
+  }
+
+  .car-data--content-item {
+    grid-template-columns: 1fr;
+  }
+
+  .images-gallery__nav-item img {
+    width: 135px;
+    height: 84px;
+  }
+
+  .footer .container {
+    grid-template: 
+    'logo'
+    'social'
+    'copy'
+    / 1fr;
+    row-gap: 1rem;
+  }
+
+  .footer .copyright, .footer .footer__logo, .footer .social-media {
+    justify-self: center;
+  }
+
+  .footer .copyright {
+    grid-area: copy;
+  }
+
+  .footer .footer__logo {
+    grid-area: logo;
+  }
+
+  .footer .social-media {
+    grid-area: social;
+  }
+}
+
+@media screen and (max-width: 500px) { 
+  .technical-sheet__highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-description h2 {
+    font-size: 2rem;
+  }
+}

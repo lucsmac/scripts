@@ -301,14 +301,14 @@ const leadsConnect = (generic, data) => {
 
 const generic = '<iframe name="form-leads_connect" id="form-leads_connect" src="https://hondabrasil.secure.force.com/CapturaLeads/myHonda_DynamicLeadCaptureForm?id=MjAyMDA2MTYxNDE5NTR8fDAwMTYxMDAwMDBOck9OSkFBMw==" frameborder="0" width="100%" height="1100" allowfullscreen=""></iframe>'
 const data = [
-  // {
-  //   page: 'novos',
-  //   form: '<iframe name="form-leads_connect" id="form-leads_connect" src="https://hondabrasil.secure.force.com/CapturaLeads/myHonda_DynamicLeadCaptureForm?id=MjAyMDA2MTYxNDE5NTR8fDAwMTYxMDAwMDBOck9OSkFBMw==" frameborder="0" width="100%" height="1100" allowfullscreen=""></iframe>'
-  // },
-  // {
-  //   page: 'seminovos',
-  //   form: '<iframe name="form-leads_connect" id="form-leads_connect" src="https://hondabrasil.secure.force.com/CapturaLeads/myHonda_DynamicLeadCaptureForm?id=MjAyMDA2MTYxNDE5NTR8fDAwMTYxMDAwMDBOck9OSkFBMw==" frameborder="0" width="100%" height="1100" allowfullscreen=""></iframe>'
-  // },
+  {
+    page: 'novos',
+    form: '<iframe name="form-leads_connect" id="form-leads_connect" src="https://hondabrasil.secure.force.com/CapturaLeads/myHonda_DynamicLeadCaptureForm?id=MjAyMDA2MTYxNDE5NTR8fDAwMTYxMDAwMDBOck9OSkFBMw==" frameborder="0" width="100%" height="1100" allowfullscreen=""></iframe>'
+  },
+  {
+    page: 'seminovos',
+    form: '<iframe name="form-leads_connect" id="form-leads_connect" src="https://hondabrasil.secure.force.com/CapturaLeads/myHonda_DynamicLeadCaptureForm?id=MjAyMDA2MTYxNDE5NTR8fDAwMTYxMDAwMDBOck9OSkFBMw==" frameborder="0" width="100%" height="1100" allowfullscreen=""></iframe>'
+  },
   // {
   //   page: 'vendas-diretas',
   //   form: '<iframe name="form-leads_connect" id="form-leads_connect" src="https://hondabrasil.secure.force.com/CapturaLeads/myHonda_DynamicLeadCaptureForm?id=MjAyMDA2MTYxNDE5NTR8fDAwMTYxMDAwMDBOck9OSkFBMw==" frameborder="0" width="100%" height="1100" allowfullscreen=""></iframe>'

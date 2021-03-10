@@ -1,4 +1,4 @@
-<script>
+{/* <script> */}
   (() => {
     document.addEventListener("DOMContentLoaded", function(event) {
       const isValidCpf = (cpf) => {
@@ -30,6 +30,7 @@
         alert.classList.add('invalid-feedback')
         alert.setAttribute('id', 'invalid-cpf-value')
         alert.innerHTML = "CPF inválido."
+        console.log(alert)
 
         const buildedInvalidCpfAlert = document.querySelector('#invalid-cpf-value')
         
@@ -45,11 +46,13 @@
         const btnSend = form.querySelector('button')
         if(length) {
           if(!isValidCpf(value)) {
+            console.log('opa, tá bão')
             alertInvalidCpf(e.target, true)
             btnSend.style.setProperty('pointer-events', 'none')
             btnSend.style.setProperty('filter', 'grayscale(100)')
           }
           else {
+            console.log('opa, tá ruim')
             alertInvalidCpf(e.target, false)
             btnSend.style.setProperty('pointer-events', 'initial')
             btnSend.style.setProperty('filter', 'initial')
@@ -66,6 +69,18 @@
           cpfInput.addEventListener('keyup', (e) => validate(e, form))
         }
       })
+
+      window.whatsappDidUpdate = () => {
+        const forms = document.querySelectorAll('form')
+
+        forms && Array.prototype.forEach.call(forms, (form) => {
+          const cpfInput = form.querySelector('input[name="cpf"]')
+          if(cpfInput) {
+            cpfInput.addEventListener('keypress', (e) => validate(e, form))
+            cpfInput.addEventListener('keyup', (e) => validate(e, form))
+          }
+        })
+      }
     })
   })()
-</script>
+{/* </script> */}
