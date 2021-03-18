@@ -2,7 +2,7 @@
   document.addEventListener("DOMContentLoaded", function(event) {
     const form = document.querySelector('form#schedule-service-conversion-form')
     const isServicePage = window.location.href.includes('/servicos/')
-    const fieldsToRemove = ['km', 'plate']
+    const fieldsToRemove = ['km', 'plate', 'year', 'model_car', 'data']
 
     const removeFields = (toRemove) => {
       const formGroups = form.querySelectorAll('.form-group')

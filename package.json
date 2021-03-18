@@ -1,0 +1,18 @@
+{
+  "name": "genius",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lucsmac/scripts.git",
+  "author": "Lucas Macedo <lucasmdc57@gmail.com>",
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
+    "husky": "^5.1.3"
+  }
+}

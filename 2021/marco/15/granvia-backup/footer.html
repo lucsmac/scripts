@@ -1,0 +1,55 @@
+<script>
+  $(function() { getUTM() });
+  </script>
+  
+  <script> window.hookConversion = function() { window.dataLayer.push({'event': 'conversion'}); }</script>
+  
+  <script>
+  $('#main-menu .nav li:contains(Novos)').first().after("<li><a href='http://consorcio.grupoviasul.com/?utm_source=granvia&utm_medium=site&utm_campaign=consorcio'>Consórcios</a></li>");
+  </script>
+  
+  <!-- REMOVE AGENDAR REVISÃO DE DROPDOWN PÓS-VENDAS -->
+  <script>
+  $('#main-menu > div > div > div > ul > li > ul > li:contains(Agendar Revisão)').remove();
+  </script>
+  
+  <!--<script type="text/javascript" src="//assets.autoforce.com.br/mods/viasul/servicos-popup5.js"></script>-->
+  
+  
+  <!-- POPUP -->
+  <script>
+  $(document).ready(function() {
+    if (window.location.pathname === '/') {
+      try {
+        $.fancybox({
+          'href': '//legado.autoforce.com.br/mods/viasul/img/supertroca.JPG',
+          'overlayColor':'#000',
+          'padding': 0,
+          'z-index': 99999,
+          afterShow: function() {
+            $(".fancybox-image").wrap('<a target="" href="//granvia.com.br/servicos"></a>');
+          }
+        });
+      } catch(error) {
+        console.warn(error);
+      }
+    }
+  });
+  </script>
+  
+  <!--
+  <script src="https://az-infobots.take.net/SantanderScripts/lib/santander-partner-blipchat.min.js" type="text/javascript"></script>
+    <script>
+          new PartnerBlipChat({
+              companyName: 'GRANVIA MATRIZ', //Nome da compania aqui. Caso não seja preenchido, será considerado o valor "santander"
+              tab: '410219', //Tab aqui. Caso não seja preenchido, será considerado o valor "436268"
+              userDocument: '', //Documento do usuário
+              uniqueId: '', //Id único do usuário. Caso não seja preenchido, será gerado um GUID
+              userName: '', //Nome do usuário. Caso não seja preenchido, será considerado o valor "Usuário(a)"
+              blipChatAppKey: 'ZmluY2hhdGdyYW52aWFtYXRyaXo6NGQ4ZjY3NWYtMDc0ZC00OTQ1LWI0MjItYTI4MjFiNWI1ZjBj' //Chave de acesso do chatbot, disponibilizado na plataforma do BLiP
+          }).start();
+    </script>
+  -->
+  
+  <!--
+  <script async src="https://chat.leadforce.com.br/ws/load/19267f0f4041a6cb1c4af2fbfc81ebaf"></script> -->

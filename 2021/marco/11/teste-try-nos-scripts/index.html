@@ -1,0 +1,36 @@
+
+
+<!-- 11/03/2020 | Teste de travamento por erro em script -->
+<!-- Fake popup -->
+<script>
+  $(document).ready(function() {
+    if (window.location.pathname === '/') {
+      try {
+        console.log('rodando o fancybox')
+        $.fancybox({
+          'href': '//legado.autoforce.com.br/mods/viasul/img/supertroca.JPG',
+          'overlayColor':'#000',
+          'padding': 0,
+          'z-index': 99999,
+          afterShow: function() {
+            $(".fancybox-image").wrap('<a target="" href="//granvia.com.br/servicos"></a>');
+          }
+        });
+      } catch(error) {
+        console.log('O fancybox não pôde ser executado');
+      }
+    }
+  });
+</script>
+
+<script>
+$(document).ready(function() {
+  if (window.location.pathname === '/') {
+    console.log('teste de travamento com ready')
+  }
+})
+</script>
+
+<script>
+  console.log('teste de travamento')
+</script>
