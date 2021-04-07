@@ -105,3 +105,17 @@ const lastDayOfMonth = () => {
     
     return lastDay
 }
+
+const getSimpleItem = (label) => {
+    return Array.prototype.find.call(
+        document.querySelectorAll('.nav-item'),
+        (item) => item.innerText.toLowerCase().includes(label)
+    )
+}
+
+const getDropdownItem = (label) => {
+    return Array.prototype.find.call(
+        document.querySelectorAll('.nav-item a[data-toggle="dropdown"]'),
+        (item) => item.innerText.toLowerCase().includes(label)
+    ).parentNode
+}
