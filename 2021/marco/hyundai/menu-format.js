@@ -31,9 +31,10 @@
 
   const moveToSubmenu = (element, submenu) => {
     const subItem = document.createElement('li')
-    subItem.classList.remove('nav-item', 'nav-simple__item')
-    subItem.classList.add('card-collapse-deep__title')
     subItem.innerHTML = element.innerHTML
+    const subItemLink = subItem.querySelector('a')
+    subItemLink.classList.remove('nav-link', 'nav-simple__link')
+    subItemLink.classList.add('card-collapse-deep__title')
 
     submenu.querySelector('.list').appendChild(subItem)
     element.parentNode.removeChild(element)
@@ -49,7 +50,7 @@
   const getSimpleItem = (label) => {
     return Array.prototype.find.call(
       document.querySelectorAll('.nav-item'),
-      (item) => item.innerText.toLowerCase().includes(label)
+      (item) => item.innerText.toLowerCase().includes(label.toLowerCase())
     )
   }
 
@@ -58,10 +59,15 @@
   const offers = getDropdownItem('ofertas')
   const solutions = getDropdownItem('soluções')
   const afterSale = getDropdownItem('pós-venda')
+  const purchase = getDropdownItem('comprar')
   const usedModels = getSimpleItem('seminovos')
   const consortia = getSimpleItem('consórcios')
+  const uniqueOffers = getSimpleItem('Ofertas Únicas')
+  const offersLink = getSimpleItem('Ofertas')
 
-  moveToSubmenu(usedModels, offers)
+  moveToSubmenu(offersLink, offers)
+  moveToSubmenu(uniqueOffers, offers)
+  moveToSubmenu(usedModels, purchase)
   moveToSubmenu(consortia, solutions)
   createSubItem('/servicos/revisao', 'Revisão programada', afterSale)
 })()
