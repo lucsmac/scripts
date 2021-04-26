@@ -8,16 +8,13 @@
     <div class="specialist-dropdown__options">
       <ul>
         <li class="specialist-dropdown__option">
-          <a href="https://api.whatsapp.com/send?phone=5511947498658">Seminovos Audi Alphaville <i class="icon icon-whatsapp"></i></a>
+          <a href="https://api.whatsapp.com/send?phone=5571981080286&text=Ol%C3%A1!%20Posso%20me%20ajudar?">Bahia <i class="icon icon-whatsapp"></i></a>
         </li>
         <li class="specialist-dropdown__option">
-          <a href="https://api.whatsapp.com/send?phone=5511999995155">Seminovos Brooklin <i class="icon icon-whatsapp"></i></a>
+          <a href="https://api.whatsapp.com/send?phone=5585991844829&text=Ol%C3%A1!%20Posso%20me%20ajudar?">Ceará <i class="icon icon-whatsapp"></i></a>
         </li>
         <li class="specialist-dropdown__option">
-          <a href="https://api.whatsapp.com/send?phone=5511998525079">Seminovos Butantã <i class="icon icon-whatsapp"></i></a>
-        </li>
-        <li class="specialist-dropdown__option">
-          <a href="https://api.whatsapp.com/send?phone=5511993836482">Seminovos Morumbi <i class="icon icon-whatsapp"></i> </a>
+          <a href="https://api.whatsapp.com/send?phone=5581992061180&text=Ol%C3%A1!%20Posso%20me%20ajudar?">Pernambuco <i class="icon icon-whatsapp"></i> </a>
         </li>
       </ul>
     </div>
@@ -60,8 +57,8 @@
       border-radius: 8px;
       box-shadow: -2px 2px 5px rgba(0,0,0,0.05);
       position: absolute;
-      top: 75px;
-      z-index: 10000;
+      bottom: 75px;
+      z-index: 99;
       display: none;
     }
 
@@ -104,10 +101,15 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 10px;
+      color: #000;
     }
 
-    #specialist-dropdown ul li:first-child a {
-      border-top: 3px solid #25d366;
+    #specialist-dropdown ul li a i {
+      color: #25d366;
+    }
+
+    #specialist-dropdown ul li:last-child a {
+      border-bottom: 3px solid #25d366;
     }
 
     #specialist-dropdown ul li a:hover {
@@ -119,5 +121,20 @@
   const dropdown = document.querySelector('#specialist-dropdown .specialist-dropdown__options')
   cta.addEventListener('click', () => {
     dropdown.classList.toggle('active')
+  })
+
+  document.addEventListener("DOMContentLoaded", function(event) {
+    const wppModal = document.querySelector('#header-conversion-form-whatsapp-modal')
+    const closeModalButton = document.querySelector('.modal__overlay-close--form')
+    const links = document.querySelectorAll('#specialist-dropdown .specialist-dropdown__option')
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault()
+        wppModal.classList.add('is-open')
+        closeModalButton.addEventListener('click', () => {
+          wppModal.classList.remove('is-open')
+        })
+      })
+    })
   })
 })()

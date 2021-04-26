@@ -119,3 +119,21 @@ const getDropdownItem = (label) => {
         (item) => item.innerText.toLowerCase().includes(label)
     ).parentNode
 }
+
+const getSimpleItem = (label) => {
+  if (!label) return null
+  const items = Array.from(document.querySelectorAll('.nav-item'))
+  const item = items.find(item => {
+    const itemLabel = item.innerText.toLowerCase() ?
+      item.innerText.toLowerCase() :
+      item.querySelector('.nav-link')
+        .innerHTML
+        .replace('<i class="icon icon-dropdown icon-arrow-d"></i>', '')
+        .toLowerCase()
+        .trim()
+        
+    return itemLabel == label.toLowerCase()
+  })
+
+  return item || null
+}

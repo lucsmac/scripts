@@ -19,6 +19,9 @@
 
     ctaTitle.parentNode.insertBefore(gallery, ctaTitle)
 
+    const form = document.querySelector('.static-conversion-form')
+    form.id = 'static-conversion-form'
+
     addStyle`
       .content--static-page .content__container-banner {
         display: none;
