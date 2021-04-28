@@ -53,7 +53,7 @@ const isThisPage = ({ urlPiece }) => {
 }
 
 const addStyle = (styles) => {
-    const css = styles,
+  const css = styles,
         head = document.head || document.getElementsByTagName('head')[0],
         style = document.createElement('style');
   head.appendChild(style);
